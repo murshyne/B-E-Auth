@@ -2,7 +2,10 @@ import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 dotenv.config();  // Loads environment variables from the .env file
 
-const db = process.env.MONGO_URI;  // Ensure correct environment variable name
+// Log the environment variable to see if it's loaded
+console.log('MONGO_URI:', process.env.MONGO_URI);  // <-- Add this line
+
+const db = process.env.MONGO_URI;
 
 const connectDB = async () => {
   try {
@@ -12,7 +15,7 @@ const connectDB = async () => {
 
     await mongoose.connect(db, {
       useNewUrlParser: true,
-      useUnifiedTopology: true,  // Recommended
+      useUnifiedTopology: true,
     });
 
     console.log('Mongo DB Connected...');
